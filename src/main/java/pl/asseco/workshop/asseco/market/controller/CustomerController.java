@@ -32,10 +32,30 @@ public class CustomerController {
         return customerReporitory.findByFirstName(firstName);
     }
 
+    @GetMapping(path="/getByFirstNameNativeQ")
+    public @ResponseBody Customer getByFirstNameNAtiveQ( @RequestParam(value = "name") String firstName){
+        return customerReporitory.findByFirstNameNativeQ(firstName);
+    }
+
+    @GetMapping(path="/getByFirstNameJQPL")
+    public @ResponseBody Customer getByFirstNameJQPL( @RequestParam(value = "name") String firstName){
+        return customerReporitory.findByFirstNameJPQL(firstName);
+    }
+
+    @GetMapping(path="/getByFirstNameHQL")
+    public @ResponseBody Customer getByFirstNameHQL( @RequestParam(value = "name") String firstName){
+        return customerReporitory.findByFirstNameHQL(firstName);
+    }
+
+
+
+
+
     @GetMapping(path="/getByNip")
     public @ResponseBody Customer getByNip( @RequestParam(value = "nip") String nip){
         return customerReporitory.findByNip(nip);
     }
+
 
     @GetMapping(path="/add")
     public @ResponseBody String add(
