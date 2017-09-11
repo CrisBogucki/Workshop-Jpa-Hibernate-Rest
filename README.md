@@ -11,7 +11,7 @@ Aplikacja stworzona na potrzeby Workshop #1 dla Asseco Poland S.A.
 * [x] Konfiguracja klasy konfiguracyjnej
 * [x] @Encja - omówienie klasy modelu obiektu struktury danych
 * [x] Repozytorium oraz standardowe metody utrwalania danych w strukturach
-* [ ] Sygnaruty metod JPA repository
+* [x] Sygnaruty metod JPA repository
 * [ ] Natywne zapytania do bazy oraz HQL(JPQL)
 * [ ] Wywoływanie procedur składowanych 
 * [ ] Relacje - Kaskadowość
