@@ -19,6 +19,13 @@ public class Customer {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
+    @OneToOne(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER,
+            optional = false
+    )
+    private CustomerAddress customerAddress;
+
     private String firstName;
 
     private String lastName;
@@ -32,6 +39,14 @@ public class Customer {
 
     public Integer getId() {
         return id;
+    }
+
+    public CustomerAddress getCustomerAddress() {
+        return customerAddress;
+    }
+
+    public void setCustomerAddress(CustomerAddress customerAddress) {
+        this.customerAddress = customerAddress;
     }
 
     public void setId(Integer id) {

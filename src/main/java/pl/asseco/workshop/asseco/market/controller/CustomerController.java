@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.asseco.workshop.asseco.market.model.Customer;
+import pl.asseco.workshop.asseco.market.model.CustomerAddress;
 import pl.asseco.workshop.asseco.market.repository.CustomerRepository;
 
 
@@ -75,12 +76,28 @@ public class CustomerController {
     public @ResponseBody String add(
             @RequestParam(value = "firstName") String firstName,
             @RequestParam(value = "lastName") String lastName,
-            @RequestParam(value = "nip") String nip){
+            @RequestParam(value = "nip") String nip,
+
+            @RequestParam(value = "city") String city,
+            @RequestParam(value = "street") String street,
+            @RequestParam(value = "nr") String nr,
+            @RequestParam(value = "code") String code
+            ){
+
+
+        CustomerAddress ca = new CustomerAddress();
+        ca.setCity(city);
+        ca.setStreet(street);
+        ca.setNumber(nr);
+        ca.setCode(code);
+
 
         Customer cus = new Customer();
         cus.setFirstName(firstName);
         cus.setLastName(lastName);
         cus.setNip(nip);
+        cus.setCustomerAddress(ca);
+
 
         customerReporitory.save(cus);
 
