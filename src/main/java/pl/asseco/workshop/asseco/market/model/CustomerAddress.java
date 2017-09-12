@@ -1,9 +1,9 @@
 package pl.asseco.workshop.asseco.market.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.repository.cdi.Eager;
+
+import javax.persistence.*;
 
 /**
  * Created by krzysztof.bogucki on 12 wrz 2017.
@@ -13,9 +13,15 @@ public class CustomerAddress {
 
     private static final long serialVersionUID = 1L;
 
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @OneToOne(mappedBy = "customerAddress", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    //@JsonIgnore
+    private Customer customer;
 
     private String city;
 
@@ -27,6 +33,14 @@ public class CustomerAddress {
 
 
     public CustomerAddress() {
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public static long getSerialVersionUID() {

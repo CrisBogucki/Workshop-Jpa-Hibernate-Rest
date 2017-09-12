@@ -13,13 +13,13 @@ Aplikacja stworzona na potrzeby Workshop #1 dla Asseco Poland S.A.
 * [x] Repozytorium oraz standardowe metody utrwalania danych w strukturach
 * [x] Sygnaruty metod JPA repository
 * [x] Natywne zapytania do bazy oraz HQL(JPQL)
-* [ ] Wywoływanie procedur składowanych 
-* [ ] Relacje - Kaskadowość
-* [ ] Relacje - FetchType
-* [ ] Relacja @OneToOne - unidirectional | bidirectional
-* [ ] Relacja @OneToMany - unidirectional | bidirectional
-* [ ] Relacja @ManyToOne - unidirectional | bidirectional
-* [ ] Relacja @ManyToMany - unidirectional | bidirectional
+* [x] Wywoływanie procedur składowanych
+* [x] Relacje - Kaskadowość
+* [x] Relacje - FetchType
+* [x] Relacja @OneToOne - unidirectional | bidirectional
+* [x] Relacja @OneToMany - unidirectional | bidirectional
+* [x] Relacja @ManyToOne - unidirectional | bidirectional
+* [x] Relacja @ManyToMany - unidirectional | bidirectional
     
     
     

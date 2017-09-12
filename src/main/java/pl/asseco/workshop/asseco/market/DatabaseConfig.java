@@ -14,4 +14,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages = "pl.asseco.workshop.market.controller")
 public class DatabaseConfig {
 
+
+
 }

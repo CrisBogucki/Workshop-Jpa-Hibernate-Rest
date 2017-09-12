@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.asseco.workshop.asseco.market.model.Customer;
 import pl.asseco.workshop.asseco.market.model.CustomerAddress;
+import pl.asseco.workshop.asseco.market.repository.CustomerAdderessRepository;
 import pl.asseco.workshop.asseco.market.repository.CustomerRepository;
 
 
@@ -21,7 +22,10 @@ import java.util.List;
 public class CustomerController {
 
     @Autowired
-    CustomerRepository customerReporitory;
+    private CustomerRepository customerReporitory;
+
+    @Autowired
+    private CustomerAdderessRepository customerAdderessRepository;
 
     @GetMapping(path="/all")
     public @ResponseBody List<Customer> getAll(){
@@ -72,6 +76,7 @@ public class CustomerController {
     }
 
 
+
     @GetMapping(path="/add")
     public @ResponseBody String add(
             @RequestParam(value = "firstName") String firstName,
@@ -103,5 +108,13 @@ public class CustomerController {
 
         return "Customer added";
     }
+
+
+    @GetMapping(path="/getAllAdress")
+    public @ResponseBody List<CustomerAddress> getAllAddress(){
+        return customerAdderessRepository.findAll();
+    }
+
+
 
 }
