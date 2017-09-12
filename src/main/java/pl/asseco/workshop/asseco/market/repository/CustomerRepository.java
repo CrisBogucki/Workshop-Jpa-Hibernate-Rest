@@ -1,9 +1,16 @@
 package pl.asseco.workshop.asseco.market.repository;
 
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 import pl.asseco.workshop.asseco.market.model.Customer;
+
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
+import java.util.List;
 
 /**
  * Created by krzysztof.bogucki on 11 wrz 2017.
@@ -24,6 +31,12 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     // HQL Query
     @Query(value = "SELECT p FROM #{#entityName} p WHERE p.firstName like ?1% ")
     Customer findByFirstNameHQL(String firstName);
+
+    // Procedure
+    @Procedure(procedureName = "procesDocumentCustomerByNIP", outputParameterName = "ROLA")
+    String procesDocumentCustomerByNIP();
+
+
 
 
 }

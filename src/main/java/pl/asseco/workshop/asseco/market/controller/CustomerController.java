@@ -47,6 +47,20 @@ public class CustomerController {
         return customerReporitory.findByFirstNameHQL(firstName);
     }
 
+    @GetMapping(path="/runProcesDocumentCustomerByNIP")
+    public @ResponseBody String runProcesDocumentCustomerByNIP() {
+        return "Wartość  pojedyńczego pola zwracana z procedury składowanej => " + customerReporitory.procesDocumentCustomerByNIP();
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 
