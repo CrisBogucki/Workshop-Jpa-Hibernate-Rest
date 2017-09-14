@@ -1,5 +1,10 @@
 package pl.asseco.workshop.asseco.market.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigInteger;
@@ -8,6 +13,7 @@ import java.math.BigInteger;
  * Created by krzysztof.bogucki on 5 wrz 2017.
  */
 @Entity
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Customer {
 
     private static final long serialVersionUID = 1L;
@@ -19,11 +25,7 @@ public class Customer {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
-    @OneToOne(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER,
-            optional = false
-    )
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false, mappedBy = "customer")
     private CustomerAddress customerAddress;
 
     private String firstName;
@@ -97,5 +99,16 @@ public class Customer {
         result = 31 * result + getLastName().hashCode();
         result = 31 * result + getNip().hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", customerAddress=" + customerAddress +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", nip='" + nip + '\'' +
+                '}';
     }
 }

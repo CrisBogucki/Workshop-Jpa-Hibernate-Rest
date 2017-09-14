@@ -69,18 +69,28 @@ public class Document {
 
         Document document = (Document) o;
 
-        if (Id != null ? !Id.equals(document.Id) : document.Id != null) return false;
-        if (CustomerId != null ? !CustomerId.equals(document.CustomerId) : document.CustomerId != null) return false;
-        if (Title != null ? !Title.equals(document.Title) : document.Title != null) return false;
-        return Description != null ? Description.equals(document.Description) : document.Description == null;
+        if (!getId().equals(document.getId())) return false;
+        if (!getCustomerId().equals(document.getCustomerId())) return false;
+        if (!getTitle().equals(document.getTitle())) return false;
+        return getDescription().equals(document.getDescription());
     }
 
     @Override
     public int hashCode() {
-        int result = Id != null ? Id.hashCode() : 0;
-        result = 31 * result + (CustomerId != null ? CustomerId.hashCode() : 0);
-        result = 31 * result + (Title != null ? Title.hashCode() : 0);
-        result = 31 * result + (Description != null ? Description.hashCode() : 0);
+        int result = getId().hashCode();
+        result = 31 * result + getCustomerId().hashCode();
+        result = 31 * result + getTitle().hashCode();
+        result = 31 * result + getDescription().hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Document{" +
+                "Id=" + Id +
+                ", CustomerId=" + CustomerId +
+                ", Title='" + Title + '\'' +
+                ", Description='" + Description + '\'' +
+                '}';
     }
 }

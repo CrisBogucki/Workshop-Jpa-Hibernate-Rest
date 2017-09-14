@@ -1,6 +1,8 @@
 package pl.asseco.workshop.asseco.market.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
@@ -9,18 +11,17 @@ import javax.persistence.*;
  * Created by krzysztof.bogucki on 12 wrz 2017.
  */
 @Entity
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class CustomerAddress {
 
     private static final long serialVersionUID = 1L;
-
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @OneToOne(mappedBy = "customerAddress", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    //@JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
     private Customer customer;
 
     private String city;
@@ -110,5 +111,17 @@ public class CustomerAddress {
         result = 31 * result + getNumber().hashCode();
         result = 31 * result + getCode().hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomerAddress{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", number='" + number + '\'' +
+                ", code='" + code + '\'' +
+                '}';
     }
 }

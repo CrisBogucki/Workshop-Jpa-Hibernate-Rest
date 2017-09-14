@@ -8,11 +8,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.asseco.workshop.asseco.market.model.Customer;
 import pl.asseco.workshop.asseco.market.model.CustomerAddress;
-import pl.asseco.workshop.asseco.market.repository.CustomerAdderessRepository;
+import pl.asseco.workshop.asseco.market.repository.CustomerAddressRepository;
 import pl.asseco.workshop.asseco.market.repository.CustomerRepository;
+import sun.net.www.content.text.Generic;
 
 
+import javax.xml.ws.ResponseWrapper;
+import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by krzysztof.bogucki on 11 wrz 2017.
@@ -25,7 +29,7 @@ public class CustomerController {
     private CustomerRepository customerReporitory;
 
     @Autowired
-    private CustomerAdderessRepository customerAdderessRepository;
+    private CustomerAddressRepository customerAddressRepository;
 
     @GetMapping(path="/all")
     public @ResponseBody List<Customer> getAll(){
@@ -110,9 +114,9 @@ public class CustomerController {
     }
 
 
-    @GetMapping(path="/getAllAdress")
+    @GetMapping(path="/getAllAddress")
     public @ResponseBody List<CustomerAddress> getAllAddress(){
-        return customerAdderessRepository.findAll();
+        return customerAddressRepository.findAll();
     }
 
 
