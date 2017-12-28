@@ -1,6 +1,6 @@
 # Workshop JAVA JPA Hibernate
 
-Aplikacja stworzona na potrzeby Workshop #1 dla Asseco Poland S.A.
+Aplikacja stworzona na potrzeby Workshop
 
 ![](http://www.topjavatutorial.com/wp-content/uploads/2016/01/hibernate.jpg)
 
